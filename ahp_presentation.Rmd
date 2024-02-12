@@ -17,7 +17,11 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Hierarchy of Criteria
 
 <div style="float: left; width: 20%;">
-The diagram shown is an example of a decision tree. There are 3 main criteria (A, B, and C) with A split into 2 sub-criteria (D and E) and C split into 2 sub-criteria (F and G) and E split further into another 2 sub-criteria (H and I)
+The diagram shown is an example of a decision tree. 
+
+There are 3 main criteria (A, B, and C) 
+
+Criterion C is formed from 2 sub-criteria (D and E)
 </div>
 <div style="float: right; width: 80%;">
 ```{r example_hierarchy, echo = FALSE}
@@ -27,7 +31,7 @@ DiagrammeR::grViz('ahp001.dot')
 
 ## Pairwise Comparisons
 
-For each criteria group (A-B-C), (D-E), (F-G), (H-I) we perform pairwise 
+For each criteria group (A-B-C), (D-E) we perform pairwise 
 comparisons using the following scale
 
 Criterion **i** compared to criterion **ii**
@@ -55,9 +59,9 @@ The matrix of the criteria group (A-B-C) might look like this
 
 | |A|B|C|
 |-:|:-:|:-:|:-:|
-|A|1|1/4|5|
-|B|4|1|1/2|
-|C|1/5|2|1|
+|A|1|7|3|
+|B|1/7|1|1/9|
+|C|1/3|9|1|
 
 ## Comparison Matrices - Scaling
 
@@ -68,19 +72,19 @@ The following...
 
 | |A|B|C|
 |-:|:-:|:-:|:-:|
-|A|1|1/4|5|
-|B|4|1|1/2|
-|C|1/5|2|1|
-|Total|5.2|3.25|6.5|
+|A|1|7|3|
+|B|1/7|1|1/9|
+|C|1/3|9|1|
+|Total|1.48|17.00|4.11|
 </div>
 <div style="float: right; width: 40%;">
 ... becomes
 
 | |A|B|C|
 |-:|:-:|:-:|:-:|
-|A|0.19|0.08|0.77|
-|B|0.77|0.31|0.08|
-|C|0.04|0.62|0.15|
+|A|0.68|0.41|0.73|
+|B|0.10|0.06|0.03|
+|C|0.23|0.53|0.24|
 </div>
 
 ## Comparison Matrices - Priority Vector
@@ -89,46 +93,46 @@ Finally we calculate the mean of each row to give the **priority vector** for th
 
 | |A'|B'|C'|Priority Vector|
 |-:|:-:|:-:|:-:|-:|
-|A|0.19|0.08|0.77|0.35|
-|B|0.77|0.31|0.08|0.38|
-|C|0.04|0.62|0.15|0.27|
-
+|A|0.68|0.41|0.73|0.61|
+|B|0.10|0.06|0.03|0.06|
+|C|0.23|0.53|0.24|0.33|
 <p>
 
-Which essentially means that criterion B represents about 38% of the decision, 35% for criterion A and 27% for criterion C.
+Which essentially means that criterion A represents about 61% of the decision, 6% for criterion B and 33% for criterion C.
 
 The same process is undertaken for the sub-criteria to calculate all the priority vectors for each criteria group
 
 ## Comparison Matrices - Complete
 
-<div style="float: left; width: 30%;">
+<div style="float: left; width: 40%;">
 Criteria group (D-E)
 
-| |D|E| |D'|E'|Priority Vector|
-|-:|:-:|:-:|-|:-:|:-:|-:|
-|D|1|1/6||0.14|0.14|0.14|
-|E|6|1||0.86|0.86|0.86|
-|Total|7|1.17|||||
-</div>
-<div style="float: left; width: 30%;">
-Criteria group (F-G)
+| |D|E|
+|-:|:-:|:-:|
+|D|1|3|
+|E|1/3|1|
+|Total|1.33|4.00|
 
-| |F|G| |F'|G'|Priority Vector|
-|-:|:-:|:-:|-|:-:|:-:|-:|
-|F|1|1/3||0.25|0.25|0.25|
-|G|3|1||0.75|0.75|0.75|
-|Total|4|1.33|||||
-</div>
-<div style="float: left; width: 30%;">
-Criteria group (H-I)
+<p>
 
-| |H|I| |H'|I'|Priority Vector|
-|-:|:-:|:-:|-|:-:|:-:|-:|
-|H|1|2||0.67|0.67|0.67|
-|I|1/2|1||0.33|0.33|0.33|
-|Total|1.5|3|||||
-</div>
+| |D'|E'|Priority Vector|
+|-:|:-:|:-:|-:|
+|D|0.75|0.75|0.75|
+|E|0.25|0.25|0.25|
 
+</div>
+<div style="float: right; width: 40%;">
+All Criteria
+
+| |Priority Vector|
+|-:|-:|
+|A|0.61|
+|B|0.06|
+|C|0.33|
+|D|0.75|
+|E|0.25|
+
+</div>
 ## Hierarchy of Criteria with Weightings
 
 <div style="float: left; width: 20%;">
@@ -146,10 +150,128 @@ We use the same pairwise comparison process as we used to calculate the hierarch
 
 For example, if we have 3 options i, ii, and iii to choose from we compare each option to each other based an each of the criterion that we have selected for the decision making process.
 
-Working up the hierarchy we start by assessing the options in respect to **Criterion I** how does **Option i** compare to **Option ii**, and how does **Option i** compare to **Option ii**, and how does **Option ii** compare to **Option iii**, all in respect to **Criterion I** and we record each of the values in the decision matrix for that criterion.
+Working up the hierarchy we start by assessing the options in respect to **Criterion E** how does **Option i** compare to **Option ii**, and how does **Option i** compare to **Option ii**, and how does **Option ii** compare to **Option iii**, all in respect to **Criterion E** and we record each of the values in the decision matrix for that criterion.
 
-We then move on to **Criterion H** and do the same, comparing each option for each criterion noted that some of these criteria are calculated from sub-criteri, e.g. E is calculated from H and I, C is calculated from F and G, and A is calculated from D and E.
+We then move on to **Criterion D** and do the same, comparing each option for each criterion. 
 
-In the end we have nine 3 x 3 matrices for the pairwaise comparison of each option against each of the criteria
+Note that criterion C is calculated from sub-criteria D and E.
 
-##
+In the end we have four 3 x 3 matrices for the pairwise comparison of each option against each of the criteria
+
+## Option Matrix - Criterion E
+
+In respect to criterion E
+
+- Option i is **the same as** option ii
+- Option i is **very much worse than** option iii (or option iii is **very much better than** option i)
+- Option ii is **definitely worse than** option iii (or option iii is **definitely better than option** ii)
+
+|E|i|ii|iii|i'|ii'|iii'|PV|
+|-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|i|1|1|1/9|0.09|0.14|0.08|0.11|
+|ii|1|1|1/5|0.09|0.14|0.15|0.13|
+|iii|9|5|1|0.82|0.71|0.76|0.77|
+|Total|11.00|7.00|1.31||||
+
+## Option Matrix - Criterion D
+
+In respect to criterion D
+
+- Option i is between **somewhat better** and **definitely better than** option ii
+- Option i is **much better than** option iii
+- Option ii is **somewhat better than** option iii
+
+|D|i|ii|iii|i'|ii'|iii'|PV|
+|-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|i|1|4|7|0.72|0.75|0.64|0.70|
+|ii|1/4|1|3|0.18|0.19|0.27|0.21|
+|iii|1/7|1/3|1|0.10|0.06|0.09|0.09|
+|Total|1.39|5.33|11.00||||
+
+## Option Matrix - Criterion B
+
+In respect to criterion B
+
+- Option i is **much worse than** option ii (or option ii is **much better than** option i)
+- Option i is **much worse than** option iii (or option iii is **much better than** option i)
+- Option ii is **definitely worse than** option iii (or option iii is **definitely better than** option ii)
+
+Criterion B
+
+|B|i|ii|iii|i'|ii'|iii'|PV|
+|-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|i|1|1/7|1/7|0.07|0.02|0.11|0.07|
+|ii|7|1|1/5|0.47|0.16|0.15|0.26|
+|iii|7|5|1|0.47|0.81|0.74|0.68|
+|Total|15.00|6.14|1.34||||
+
+## Option Matrix - Criterion A
+
+In respect to criterion A
+
+- Option i is **somewhat better than** option ii
+- Option i is **very much better than** option iii
+- Option ii is **much better than** option iii
+
+|A|i|ii|iii|i'|ii'|iii'|PV|
+|-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|i|1|3|9|0.69|0.72|0.53|0.65|
+|ii|1/3|1|7|0.23|0.24|0.41|0.29|
+|iii|1/9|1/7|1|0.08|0.03|0.06|0.06|
+|Total|1.44|4.14|17.00||||
+
+## Option Matrix - Criterion C
+
+Criterion C is calculated from the criteria D and E
+
+Criterion C has a PV of 0.33 and D has a PV of 0.75 and E a PV of 0.25
+
+The calculation of the score for option i in respect to criterion C becomes
+
+Option 1 = 0.33 * (score for option i in respect to criterion D + score for option i in respect to criterion E)
+Option 1 = 0.33 * ()
+
+## Complete Decision Matrix
+
+|Criterion|Criterion PV|i|ii|iii|
+|-:|-:|-:|-:|-:|
+|A|0.61|= 0.61 * 0.65<br>= 0.39|= 0.61 * 0.29<br>= 0.18|= 0.61 * 0.06<br>= 0.03|
+|B|0.06|= 0.06 * 0.07<br>= 0.00|= 0.06 * 0.26<br>= 0.02|= 0.06 * 0.68<br>= 0.04|
+|C|0.33|= 0.33 * (D + E)<br>= 0.33 * (0.53 + 0.03)<br>= 0.18|= 0.33 * (D + E)<br>= 0.33 * (0.16 + 0.03)<br>= 0.06|= 0.33 * (D + E)<br>= 0.33 * (0.06 + 0.19)<br>= 0.08|
+|D|0.75|= 0.75 * 0.70<br>= 0.53|= 0.75 * 0.21<br>= 0.16|= 0.75 * 0.09<br>= 0.06|
+|E|0.25|= 0.25 * 0.11<br>= 0.03|= 0.25 * 0.13<br>= 0.03|= 0.25 * 0.77<br>= 0.19|
+|Goal||0.58|0.26|0.16|
+
+## Hierarchy of Option i Score
+
+<div style="float: left; width: 20%;">
+The hierarchy diagram can now be updated for the score for **option i**
+</div>
+<div style="float: right; width: 80%;">
+```{r hierarchy_option_i, echo = FALSE}
+DiagrammeR::grViz('ahp003.dot')
+```
+</div>
+
+## Hierarchy of Option ii Score
+
+<div style="float: left; width: 20%;">
+The hierarchy diagram can now be updated for the score for **option ii**
+</div>
+<div style="float: right; width: 80%;">
+```{r hierarchy_option_ii, echo = FALSE}
+DiagrammeR::grViz('ahp004.dot')
+```
+</div>
+
+## Hierarchy of Option iii Score
+
+<div style="float: left; width: 20%;">
+The hierarchy diagram can now be updated for the score for **option iii**
+</div>
+<div style="float: right; width: 80%;">
+```{r hierarchy_option_iii, echo = FALSE}
+DiagrammeR::grViz('ahp005.dot')
+```
+</div>
+

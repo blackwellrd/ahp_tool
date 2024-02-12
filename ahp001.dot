@@ -5,10 +5,9 @@ digraph G {
 		Goal
 
 	node [shape = box, fontname = Helvetica]
-		A; B; C; D; E; F; G; H; I;
+		A; B; C; D; E; 
 		
 	edge [dir = ""]
 		A->Goal; B->Goal; C->Goal;
-		D->A; E->A; F->C; G->C;
-		H->E; I->E;
+		D->C; E->C; 
 }

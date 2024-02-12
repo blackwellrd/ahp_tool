@@ -5,11 +5,11 @@ digraph G {
 		Goal
 
 	node [shape = box, fontname = Helvetica]
-		A [label = "A\n0.61"];
-		B [label = "B\n0.06"];
-		C [label = "C\n0.33"];
-		D [label = "D\n(0.33*0.75)\n0.25"];
-		E [label = "E\n(0.33*0.25)\n0.08"];
+		A [label = "A\n0.39"];
+		B [label = "B\n0.00"];
+		C [label = "C\n0.18"];
+		D [label = "D\n0.53"];
+		E [label = "E\n0.03"];
 
 	edge [dir=""]
 		A->Goal; B->Goal; C->Goal;
