@@ -1,0 +1,155 @@
+---
+title: "Analytic Hierarchy Process"
+author: "Richard Blackwell"
+date: "`r Sys.Date()`"
+output: 
+  ioslides_presentation:            
+    logo: HISW_Logo_RGB_Positive.png
+    widescreen: true
+    smaller: true
+    css: "style.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Hierarchy of Criteria
+
+<div style="float: left; width: 20%;">
+The diagram shown is an example of a decision tree. There are 3 main criteria (A, B, and C) with A split into 2 sub-criteria (D and E) and C split into 2 sub-criteria (F and G) and E split further into another 2 sub-criteria (H and I)
+</div>
+<div style="float: right; width: 80%;">
+```{r example_hierarchy, echo = FALSE}
+DiagrammeR::grViz('ahp001.dot')
+```
+</div>
+
+## Pairwise Comparisons
+
+For each criteria group (A-B-C), (D-E), (F-G), (H-I) we perform pairwise 
+comparisons using the following scale
+
+Criterion **i** compared to criterion **ii**
+
+ - Equally important = 1 
+ - Somewhat more important = 3 *(or 1/3)*
+ - Definitely more important = 5 *(or 1/5)*
+ - Much more important = 7 *(or 1/7)*
+ - Very much more important = 9 *(or 1/9)*
+
+If the comparison lies in-between categories use the value between the two categories.
+
+*If criterion **ii** is deemed more important than **i** the reciprocal (1/x) is used as the weighting for that pairwise comparison*
+
+**For example:**
+A is somewhere between **much more important** and **very much more important** than B, so we have a value of 8 for the **A vs B** comparison
+
+## Comparison Matrices
+
+For each criteria group we can create a matrix of the comparison
+
+For example:
+
+The matrix of the criteria group (A-B-C) might look like this
+
+| |A|B|C|
+|-:|:-:|:-:|:-:|
+|A|1|1/4|5|
+|B|4|1|1/2|
+|C|1/5|2|1|
+
+## Comparison Matrices - Scaling
+
+We then scale each column to equal 1 by dividing each value by the total for that column 
+
+<div style="float: left; width: 40%;">
+The following...
+
+| |A|B|C|
+|-:|:-:|:-:|:-:|
+|A|1|1/4|5|
+|B|4|1|1/2|
+|C|1/5|2|1|
+|Total|5.2|3.25|6.5|
+</div>
+<div style="float: right; width: 40%;">
+... becomes
+
+| |A|B|C|
+|-:|:-:|:-:|:-:|
+|A|0.19|0.08|0.77|
+|B|0.77|0.31|0.08|
+|C|0.04|0.62|0.15|
+</div>
+
+## Comparison Matrices - Priority Vector
+
+Finally we calculate the mean of each row to give the **priority vector** for the criterion in that row
+
+| |A'|B'|C'|Priority Vector|
+|-:|:-:|:-:|:-:|-:|
+|A|0.19|0.08|0.77|0.35|
+|B|0.77|0.31|0.08|0.38|
+|C|0.04|0.62|0.15|0.27|
+
+<p>
+
+Which essentially means that criterion B represents about 38% of the decision, 35% for criterion A and 27% for criterion C.
+
+The same process is undertaken for the sub-criteria to calculate all the priority vectors for each criteria group
+
+## Comparison Matrices - Complete
+
+<div style="float: left; width: 30%;">
+Criteria group (D-E)
+
+| |D|E| |D'|E'|Priority Vector|
+|-:|:-:|:-:|-|:-:|:-:|-:|
+|D|1|1/6||0.14|0.14|0.14|
+|E|6|1||0.86|0.86|0.86|
+|Total|7|1.17|||||
+</div>
+<div style="float: left; width: 30%;">
+Criteria group (F-G)
+
+| |F|G| |F'|G'|Priority Vector|
+|-:|:-:|:-:|-|:-:|:-:|-:|
+|F|1|1/3||0.25|0.25|0.25|
+|G|3|1||0.75|0.75|0.75|
+|Total|4|1.33|||||
+</div>
+<div style="float: left; width: 30%;">
+Criteria group (H-I)
+
+| |H|I| |H'|I'|Priority Vector|
+|-:|:-:|:-:|-|:-:|:-:|-:|
+|H|1|2||0.67|0.67|0.67|
+|I|1/2|1||0.33|0.33|0.33|
+|Total|1.5|3|||||
+</div>
+
+## Hierarchy of Criteria with Weightings
+
+<div style="float: left; width: 20%;">
+The hierarchy diagram can now be updated with the criteria weightings (priority vectors)
+</div>
+<div style="float: right; width: 80%;">
+```{r completed_hierarchy, echo = FALSE}
+DiagrammeR::grViz('ahp002.dot')
+```
+</div>
+
+## Using the Hierarchy to Compare Decisions
+
+We use the same pairwise comparison process as we used to calculate the hierarchy to assess each of the options to make decisions about.
+
+For example, if we have 3 options i, ii, and iii to choose from we compare each option to each other based an each of the criterion that we have selected for the decision making process.
+
+In respect to **Criterion A** how does **Option i** compare to **Option ii**, and how does **Option i** compare to **Option ii**, and how does **Option ii** compare to **Option iii**, all in respect to **Criterion A** and we record each of the values in the decision matrix for that criterion.
+
+We then move on to **Criterion B** and do the same, comparing each option for each criterion through to **Criterion I**
+
+In the end we have nine 3 x 3 matrices for the pairwaise comparison of each option against each of the criteria
+
+##

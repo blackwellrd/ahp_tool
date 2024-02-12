@@ -1,0 +1,26 @@
+digraph G {
+    rankdir = BT;
+	
+	node [shape = circle, fontname = Helvetica]
+		Goal
+
+	node [shape = box, fontname = Helvetica]
+		A [label = "A = 0.35"];
+		B [label = "B = 0.38"];
+		C [label = "C = 0.27"];
+		D [label = "D = 0.14"];
+		E [label = "E = 0.86"];
+		F [label = "F = 0.25"];
+		G [label = "G = 0.75"];
+		H [label = "H = 0.67"];
+		I [label = "I = 0.33"];
+		
+		
+	edge [dir=""]
+		A->Goal; B->Goal; C->Goal;
+		D->A; E->A; F->C; G->C;
+		H->E; I->E;
+		
+
+
+}

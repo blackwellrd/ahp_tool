@@ -1,0 +1,14 @@
+digraph G {
+    rankdir = BT;
+	
+	node [shape = circle, fontname = Helvetica]
+		Goal
+
+	node [shape = box, fontname = Helvetica]
+		A; B; C; D; E; F; G; H; I;
+		
+	edge [dir = ""]
+		A->Goal; B->Goal; C->Goal;
+		D->A; E->A; F->C; G->C;
+		H->E; I->E;
+}

@@ -1,0 +1,26 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+### Page 1
+
+Content
+
+*** 
+
+Comments Page 1
+
+### Page 2
+
+Content
+
+*** 
+
+Comments Page 2
