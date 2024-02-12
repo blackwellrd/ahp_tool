@@ -8,7 +8,7 @@ digraph G {
 		A [label = "A = 0.35"];
 		B [label = "B = 0.38"];
 		C [label = "C = 0.27"];
-		D [label = "D = 0.14"];
+		D [label = "D = (0.14 * "];
 		E [label = "E = 0.86"];
 		F [label = "F = 0.25"];
 		G [label = "G = 0.75"];

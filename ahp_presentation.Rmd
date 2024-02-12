@@ -132,7 +132,7 @@ Criteria group (H-I)
 ## Hierarchy of Criteria with Weightings
 
 <div style="float: left; width: 20%;">
-The hierarchy diagram can now be updated with the criteria weightings (priority vectors)
+The hierarchy diagram can now be updated with the criteria weightings (priority vectors).
 </div>
 <div style="float: right; width: 80%;">
 ```{r completed_hierarchy, echo = FALSE}
@@ -146,9 +146,9 @@ We use the same pairwise comparison process as we used to calculate the hierarch
 
 For example, if we have 3 options i, ii, and iii to choose from we compare each option to each other based an each of the criterion that we have selected for the decision making process.
 
-In respect to **Criterion A** how does **Option i** compare to **Option ii**, and how does **Option i** compare to **Option ii**, and how does **Option ii** compare to **Option iii**, all in respect to **Criterion A** and we record each of the values in the decision matrix for that criterion.
+Working up the hierarchy we start by assessing the options in respect to **Criterion I** how does **Option i** compare to **Option ii**, and how does **Option i** compare to **Option ii**, and how does **Option ii** compare to **Option iii**, all in respect to **Criterion I** and we record each of the values in the decision matrix for that criterion.
 
-We then move on to **Criterion B** and do the same, comparing each option for each criterion through to **Criterion I**
+We then move on to **Criterion H** and do the same, comparing each option for each criterion noted that some of these criteria are calculated from sub-criteri, e.g. E is calculated from H and I, C is calculated from F and G, and A is calculated from D and E.
 
 In the end we have nine 3 x 3 matrices for the pairwaise comparison of each option against each of the criteria
 

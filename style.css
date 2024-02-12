@@ -12,9 +12,3 @@ slides > slide:not(.nobackground):before {
   height: 50px;
   background-size: 123px 50px;
 }
-
-#commentary-image-slide {
-  .column {float: left;}
-  .left {width: 25%;}
-  .right {width: 75%;}  
-}
